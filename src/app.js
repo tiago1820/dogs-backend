@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const router = require("./routes/index");
 
 const server = express();
 server.use(morgan("dev"));
@@ -18,6 +19,6 @@ server.use((req, res, next) => {
 });
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
-// server.use("/api", router);
+server.use("/api", router);
 
 module.exports = { server };
